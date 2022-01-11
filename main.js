@@ -31,7 +31,7 @@ const team = [
   },
 ];
 
-for (let i = 0; i < team.length; i++) {
+for(let i = 0; i < team.length; i++){
   getCardCode(team[i]);
 }
 
@@ -47,8 +47,16 @@ function addCard(){
   }
   team.push(newCard);
   getCardCode(newCard);
-  
+
+  deleteInput();
 }
+
+function deleteInput() {
+  document.getElementById('name').value = "";
+  document.getElementById('role').value = "";
+  document.getElementById('image').value = "";
+}
+
 
 function getCardCode(cardObj) {
   let imageLink = "img/";
