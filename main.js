@@ -63,7 +63,7 @@ function getCardCode(cardObj) {
   if(cardObj.image.slice(0,4) == "http"){
     imageLink = "";
   }
-  document.querySelector('.team-container').innerHTML = `
+  document.querySelector('.team-container').innerHTML += `
     <div class="team-card">
       <div class="card-image">
         <img
