@@ -31,33 +31,41 @@ const team = [
   },
 ];
 
-
-
-const addbtn = document.getElementById('addMemberButton');
-
-addbtn.addEventListener("click",addCard);
-
-function addCard() {
-  const newCard = {
-    name: document.getElementById('name').value,
-    name: document.getElementById('role').value,
-    name: document.getElementById('image').value
-  }
-
+for (let i = 0; i < team.length; i++) {
+  getCardCode(team[i]);
 }
 
-function getCardCode(cardObject) {
+const addBtn = document.getElementById('addMemberButton');
+
+addBtn.addEventListener("click",addCard);
+
+function addCard(){
+  const newCard = {
+    name: document.getElementById('name').value,
+    role: document.getElementById('role').value,
+    image: document.getElementById('image').value
+  }
+  team.push(newCard);
+  getCardCode(newCard);
+  
+}
+
+function getCardCode(cardObj) {
+  let imageLink = "img/";
+  if(cardObj.image.slice(0,4) == "http"){
+    imageLink = "";
+  }
   document.querySelector('.team-container').innerHTML = `
     <div class="team-card">
       <div class="card-image">
         <img
-          src="img/wayne-barnett-founder-ceo.jpg"
-          alt="Wayne Barnett"
+          src="${imageLink}${cardObj.image}"
+          alt="${cardObj.name}"
         />
       </div>
       <div class="card-text">
-        <h3>Wayne Barnett</h3>
-        <p>Founder & CEO</p>
+        <h3>${cardObj.name}</h3>
+        <p>${cardObj.role}</p>
       </div>
     </div>`;
 }
